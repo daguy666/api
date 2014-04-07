@@ -35,12 +35,12 @@ try:
 except urllib2.HTTPError, e:
 
     if e.code == 404:
-        print "You are safe"
+        print "Your email address was not on any lists."
     else: 
         print "Call to api failed."
 else:
     my_json = json.load(result)
 
-    print "Email address was found on the following lists:"
+    print "Your email address was found on the following lists:"
     for entry in my_json:
         print entry['Name']
