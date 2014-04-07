@@ -40,10 +40,6 @@ except urllib2.HTTPError, e:
         print "Call to api failed."
 else:
     my_json = json.load(result)
-#fixed_json = pprint(my_json)
-#print fixed_json
-#json_encoded = json.dumps(my_json)
-#print  json_encode
 
     print "Email address was found on the following lists:"
     for entry in my_json:
