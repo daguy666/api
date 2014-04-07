@@ -4,7 +4,7 @@ import json
 import urllib2
 
 """ This is using the haveibeenpwned.com api to search for owned accounts. 
-You are searching for email accounts on the following compromised websites;
+You are searching for email accounts on the following compromised websites
      accounts           sites
      --------           -----
     152,445,165     Adobe accounts
@@ -26,10 +26,13 @@ You are searching for email accounts on the following compromised websites;
     3,200           UN Internet Governance Forum accounts
     2,239           Tesco accounts
 """
-email = raw_input("Please enter the email account you would like to check: ")
-www = "https://haveibeenpwned.com/api/v2/breachedaccount/%s" % (email)
-request = urllib2.Request(www)
-result = urllib2.urlopen(request)
+email = raw_input("Please enter the email account you would like to check: ") # Which email address to check
+www = "https://haveibeenpwned.com/api/v2/breachedaccount/%s" % (email) 
+request = urllib2.Request(www) # url + variable 
+result = urllib2.urlopen(request) 
 
 my_json = json.load(result)
 fixed_json = pprint(my_json)
+print fixed_json
+#json_encoded = json.dumps(my_json)
+#print  json_encoded
