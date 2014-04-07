@@ -28,11 +28,23 @@ You are searching for email accounts on the following compromised websites
 """
 email = raw_input("Please enter the email account you would like to check: ") # Which email address to check
 www = "https://haveibeenpwned.com/api/v2/breachedaccount/%s" % (email) 
-request = urllib2.Request(www) # url + variable 
-result = urllib2.urlopen(request) 
 
-my_json = json.load(result)
-fixed_json = pprint(my_json)
-print fixed_json
+try:
+    request = urllib2.Request(www) # url + variable 
+    result = urllib2.urlopen(request) 
+except urllib2.HTTPError, e:
+
+    if e.code == 404:
+        print "You are safe"
+    else: 
+        print "Call to api failed."
+else:
+    my_json = json.load(result)
+#fixed_json = pprint(my_json)
+#print fixed_json
 #json_encoded = json.dumps(my_json)
-#print  json_encoded
+#print  json_encode
+
+    print "Email address was found on the following lists:"
+    for entry in my_json:
+        print entry['Name']
