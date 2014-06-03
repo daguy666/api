@@ -45,7 +45,6 @@ except urllib2.HTTPError, e:
         print "Call to api failed."
 else:
     my_json = json.load(result)
-
     print "Your email address was found on the following lists:"
     for entry in my_json:
         print entry['Name']
