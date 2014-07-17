@@ -14,12 +14,6 @@ except urllib2.HTTPError, e:
         print "Bad Request"
     if e.code == 404:
         print "Not Found"
-    if e.code == 500:
-        print "Internal Server Error"
-    if e.code == 503:
-        print "Service Unavailable"
-    if e.code == 504:
-        print "Bad Gateway"
     else:
         print "Call to API failed"
 
