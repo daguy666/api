@@ -2,6 +2,7 @@
 from pprint import pprint
 import json
 import urllib2
+import sys
 
 sites = """
 31 pwned websites  168,443,583  pwned accounts
@@ -39,6 +40,12 @@ sites = """
 """
 
 email = raw_input("Please enter the email account you would like to check: ")  # Which email address to check
+
+if len(email) > 0:
+    print "Searching for %s" % email
+else:
+   sys.exit(1)
+
 www = "https://haveibeenpwned.com/api/v2/breachedaccount/%s" % email
 
 try:
